@@ -1,0 +1,439 @@
+/* -----------------------------------------------------------
+   1. GOOGLE FONT
+----------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
+
+/* -----------------------------------------------------------
+   2. TAILWIND
+----------------------------------------------------------- */
+@import "tailwindcss";
+@import "react-calendar/dist/Calendar.css";
+
+/* -----------------------------------------------------------
+   3. DARK MODE THEME TOKENS (ORIGINAL PERSONALITY)
+----------------------------------------------------------- */
+:root {
+  /* App layers */
+  --color-app-bg: #0b0d10;
+  --color-app-frame: #0f1317;
+  --color-surface: #15181c;
+  --color-surface-2: #1a1f24;
+
+  /* Primary neon */
+  --color-primary: #36e8b6;
+  --color-primary-600: #2bc499;
+  --color-primary-800: #1aaf94;
+  --color-primary-rgb: 54, 232, 182;
+
+  /* Text */
+  --color-text-main: #e9eef6;
+  --color-text-muted: #8b929f;
+
+  /* Radius */
+  --radius-xl: 20px;
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  /* Shadows (cinematic) */
+  --shadow-soft: 0 8px 40px rgba(2, 6, 12, 0.6);
+  --shadow-elev: 0 18px 60px rgba(2, 6, 12, 0.7);
+  --shadow-glow: 0 0 40px rgba(54, 232, 182, 0.18);
+
+  /* Glass */
+  --glass-weak: rgba(255, 255, 255, 0.02);
+  --glass-strong: rgba(255, 255, 255, 0.04);
+
+  /* Noise */
+  --noise-opacity: 0.02;
+}
+
+/* -----------------------------------------------------------
+   4. BASE STYLES
+----------------------------------------------------------- */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: var(--color-app-bg);
+  color: var(--color-text-main);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* -----------------------------------------------------------
+   5. UTILITIES
+----------------------------------------------------------- */
+.bg-app-bg { background: var(--color-app-bg); }
+.bg-app-frame { background: var(--color-app-frame); }
+.bg-surface { background: var(--color-surface); }
+.bg-surface-2 { background: var(--color-surface-2); }
+
+.text-text-main { color: var(--color-text-main); }
+.text-text-muted { color: var(--color-text-muted); }
+
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-elev { box-shadow: var(--shadow-elev); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+.card-border {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* -----------------------------------------------------------
+   6. GLASSMORPHISM (ORIGINAL)
+----------------------------------------------------------- */
+.glass {
+  background: linear-gradient(
+    180deg,
+    var(--glass-weak),
+    var(--glass-strong)
+  );
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+}
+
+/* -----------------------------------------------------------
+   7. BLOOM / NEON AURA (RESTORED)
+----------------------------------------------------------- */
+.bloom-ring {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+
+@keyframes bloomPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.08);
+  }
+}
+
+.animate-bloomPulse {
+  animation: bloomPulse 6s ease-in-out infinite;
+}
+
+/* -----------------------------------------------------------
+   8. NOISE OVERLAY
+----------------------------------------------------------- */
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* -----------------------------------------------------------
+   9. ICON BOX (NEON KPI)
+----------------------------------------------------------- */
+.icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-primary-rgb), 0.18),
+    rgba(255, 255, 255, 0.04)
+  );
+  box-shadow: 0 8px 30px rgba(var(--color-primary-rgb), 0.35);
+}
+
+/* -----------------------------------------------------------
+   10. PREMIUM DARK CALENDAR
+----------------------------------------------------------- */
+.premium-calendar {
+  width: 100%;
+  border: none !important;
+  background: transparent !important;
+  font-family: inherit;
+  color: var(--color-text-main);
+}
+
+.premium-calendar .react-calendar__tile {
+  border-radius: 10px;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.premium-calendar .react-calendar__tile:hover {
+  background: rgba(var(--color-primary-rgb), 0.14);
+  color: var(--color-primary);
+}
+
+.premium-calendar .react-calendar__tile--now {
+  border: 1px solid var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.15);
+}
+
+/* -----------------------------------------------------------
+   11. SCROLLBAR HIDE
+----------------------------------------------------------- */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { scrollbar-width: none; }
+
+/* -----------------------------------------------------------
+   LIGHT MODE THEME — LUXURY GLASS (Raycast Inspired)
+----------------------------------------------------------- */
+
+.light {
+  /* App layers */
+  --color-app-bg: #f6f7f9;          /* cool off-white */
+  --color-app-frame: #ffffff;
+ --color-surface: rgba(255, 255, 255, 0.72);
+--color-surface-2: rgba(255, 255, 255, 0.92);
+
+
+  /* Primary (Indigo / Violet) */
+  --color-primary: #5b6cff;
+  --color-primary-600: #4a5af0;
+  --color-primary-800: #3a49d8;
+  --color-primary-rgb: 91, 108, 255;
+
+  /* Text */
+  --color-text-main: #0f172a;       /* slate-900 */
+  --color-text-muted: #64748b;      /* slate-500 */
+
+  /* Radius (slightly tighter) */
+  --radius-xl: 18px;
+  --radius-lg: 12px;
+  --radius-md: 9px;
+  --radius-sm: 7px;
+
+  /* Shadows (ambient, Apple-like) */
+  --shadow-soft: 
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.06);
+
+  --shadow-elev: 
+    0 4px 10px rgba(15, 23, 42, 0.08),
+    0 24px 48px rgba(15, 23, 42, 0.10);
+
+  --shadow-glow: 
+    0 0 0 rgba(0,0,0,0); /* ❌ no glow in light mode */
+
+  /* Glass */
+  --glass-weak: rgba(255, 255, 255, 0.45);
+  --glass-strong: rgba(255, 255, 255, 0.65);
+
+  /* Noise */
+  --noise-opacity: 0.015;
+  /* Edge & border system */
+--border-subtle: rgba(15, 23, 42, 0.06);
+--border-strong: rgba(15, 23, 42, 0.10);
+
+}
+.light .glass {
+  background: linear-gradient(
+    180deg,
+    var(--glass-strong),
+    var(--glass-weak)
+  );
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  
+}
+
+.light .card-border {
+  border: 3px solid var(--border-subtle);
+}
+.light .glass {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.04);
+}
+
+.light .layout-separator {
+  border-bottom: 1px solid var(--border-subtle);
+}
+.light {
+  /* KPI gradients */
+  --kpi-gradient-primary:
+    linear-gradient(
+      180deg,
+      rgba(91,108,255,0.18),
+      rgba(91,108,255,0.04)
+    );
+
+  --kpi-gradient-green:
+    linear-gradient(
+      180deg,
+      rgba(54,232,182,0.20),
+      rgba(54,232,182,0.04)
+    );
+
+  --kpi-gradient-violet:
+    linear-gradient(
+      180deg,
+      rgba(124,92,255,0.20),
+      rgba(124,92,255,0.04)
+    );
+
+  --kpi-gradient-orange:
+    linear-gradient(
+      180deg,
+      rgba(255,148,112,0.22),
+      rgba(255,148,112,0.04)
+    );
+}
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.light .kpi-card {
+  background:
+    var(--kpi-gradient-primary),
+    var(--color-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+}
+.light .kpi-green {
+  background:
+    var(--kpi-gradient-green),
+    var(--color-surface);
+}
+
+.light .kpi-violet {
+  background:
+    var(--kpi-gradient-violet),
+    var(--color-surface);
+}
+
+.light .kpi-orange {
+  background:
+    var(--kpi-gradient-orange),
+    var(--color-surface);
+}
+/* Base dashboard panel */
+.dashboard-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light mode panel */
+.light .dashboard-panel {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--color-primary-rgb), 0.06),
+      rgba(var(--color-primary-rgb), 0.01)
+    ),
+    var(--color-surface);
+
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Dark mode keeps original look */
+.section-header {
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.light .section-header {
+  border-bottom: 1px solid var(--border-subtle);
+}
+/* --------------------------
+   LIGHT MODE SIDEBAR ACTIVE
+--------------------------- */
+
+/* --------------------------------
+   SIDEBAR – LIGHT MODE
+-------------------------------- */
+
+.light .sidebar-item {
+  color: var(--color-text-muted);
+}
+
+.light .sidebar-item:hover {
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--color-text-main);
+}
+
+/* ACTIVE ITEM – LIGHT MODE */
+.light .sidebar-item-active {
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--color-text-main);
+  font-weight: 500;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(15, 23, 42, 0.10),
+    0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+/* Right-side indicator dot */
+.light .sidebar-item-active::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+/* Icon behavior */
+.light .sidebar-icon {
+  color: var(--color-text-muted);
+}
+
+.light .sidebar-item-active .sidebar-icon {
+  color: var(--color-primary);
+}
+/* --------------------------------
+   SIDEBAR – DARK MODE (DEFAULT)
+-------------------------------- */
+
+.sidebar-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--color-text-main);
+}
+
+.sidebar-item-active {
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.sidebar-item-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--color-primary);
+  border-radius: 0 6px 6px 0;
+}
+/* ---------------------------------
+   ASSETS TABLE – ROW SEPARATORS
+--------------------------------- */
+
+/* LIGHT MODE: inset shadow separator */
+.light .asset-row {
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.08);
+}
+
+/* DARK MODE: normal border works */
+.asset-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
