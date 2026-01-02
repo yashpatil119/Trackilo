@@ -45,21 +45,16 @@ const assets = [
 ];
 
 /* 🔑 SINGLE SOURCE OF TRUTH */
-const COLS =
-  "grid-cols-[300px_120px_120px_160px_120px_110px]";
+const COLS = "grid-cols-[300px_120px_120px_160px_120px_110px]";
 
 export default function Assets() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   return (
-    
     <div className="space-y-10">
-
       {/* ================= HEADER ================= */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-text-main">
-            Assets
-          </h1>
+          <h1 className="text-2xl font-semibold text-text-main">Assets</h1>
           <p className="text-sm text-text-muted mt-1">
             Manage and track organizational assets
           </p>
@@ -68,29 +63,25 @@ export default function Assets() {
         <div className="flex items-center gap-3">
           {/* ADD ASSET */}
           <button
-          onClick={() => setIsAddModalOpen(true)}
+            onClick={() => setIsAddModalOpen(true)}
             className="
               flex items-center gap-2 px-4 py-2 rounded-xl
-              bg-gradient-to-b from-primary/90 to-primary
-              text-red text-sm font-medium
-              border border-primary/40
+              btn-add text-sm font-medium
               shadow-glow
               hover:brightness-105
               transition
             "
           >
-            <Plus size={16}  />
+            <Plus size={16} />
             Add Asset
           </button>
-          
+
           {/* IMPORT */}
           <button
             className="
               flex items-center gap-2 px-4 py-2 rounded-xl
-              bg-surface text-text-main
-              border card-border
-              hover:bg-surface-2
-              transition text-sm
+              btn-import text-sm font-medium
+              transition
             "
           >
             <Upload size={16} />
@@ -101,26 +92,23 @@ export default function Assets() {
           <button
             className="
               flex items-center gap-2 px-4 py-2 rounded-xl
-              bg-surface text-text-main
-              border card-border
-              hover:bg-surface-2
-              transition text-sm
+              btn-export text-sm font-medium
+              transition
             "
           >
             <Download size={16} />
             Export
           </button>
         </div>
-         <FormModal
-        open={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
-      />
+        <FormModal
+          open={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
+        />
       </div>
 
       {/* ================= FILTER BAR ================= */}
       <div className="dashboard-panel glass glass-edge elev-1 rounded-xl p-4">
         <div className="flex flex-wrap items-center gap-3">
-
           <input
             type="text"
             placeholder="Search by name, tag, or brand"
@@ -129,7 +117,7 @@ export default function Assets() {
               px-4 py-2 rounded-lg
               bg-app-frame
               text-text-main placeholder:text-text-muted
-              border card-border
+              border border-subtle
               focus:outline-none focus:ring-2 focus:ring-primary/30
             "
           />
@@ -140,7 +128,7 @@ export default function Assets() {
               className="
                 px-3 py-2 rounded-lg
                 bg-app-frame text-text-main
-                border card-border
+                border border-subtle
                 focus:outline-none
               "
             >
@@ -156,19 +144,9 @@ export default function Assets() {
 
       {/* ================= TABLE ================= */}
       <div className="dashboard-panel glass glass-edge elev-1 rounded-xl overflow-hidden">
-
         {/* HEADER */}
-       
-        <div
-  className="
-    px-6 py-3
-    text-xs font-medium uppercase tracking-wide
-    text-text-muted
-    shadow-[inset_0_-1px_0_rgba(15,23,42,0.12)]
-    dark:border-b dark:border-white/10
-  "
->
 
+        <div className="table-header">
           <div className={`grid ${COLS} gap-4`}>
             <span>Asset</span>
             <span>Type</span>
@@ -184,48 +162,43 @@ export default function Assets() {
           <div
             key={a.id}
             className={`
-              px-6 py-4
-              transition
-              hover:bg-black/5 dark:hover:bg-white/5
-              ${idx !== assets.length - 1
-                ? "border-b border-black/10 dark:border-white/10"
-                : ""}
+              px-6 py-4 transition row-hover
+              ${idx !== assets.length - 1 ? "border-b border-subtle" : ""}
             `}
           >
             <div className={`grid ${COLS} gap-4 items-center`}>
-
               {/* Asset */}
               <div className="flex items-center gap-3">
-                <div className="
+                <div
+                  className="
                   w-10 h-10 rounded-lg
                   bg-surface-2
                   flex items-center justify-center
-                ">
+                "
+                >
                   <Package size={18} />
                 </div>
                 <div>
                   <div className="text-sm font-medium text-text-main">
                     {a.name}
                   </div>
-                  <div className="text-xs text-text-muted">
-                    {a.tag}
-                  </div>
+                  <div className="text-xs text-text-muted">{a.tag}</div>
                 </div>
               </div>
 
               {/* Type */}
-              <span className="
+              <span
+                className="
                 text-xs font-medium px-2 py-1 rounded-md w-fit
                 bg-app-frame text-text-main
-                border card-border
-              ">
+                border border-subtle
+              "
+              >
                 {a.type}
               </span>
 
               {/* Brand */}
-              <span className="text-sm text-text-main">
-                {a.brand}
-              </span>
+              <span className="text-sm text-text-main">{a.brand}</span>
 
               {/* Location */}
               <span className="flex items-center gap-1 text-sm text-text-main">
@@ -256,7 +229,7 @@ export default function Assets() {
                       p-2 rounded-lg
                       text-text-muted
                       hover:text-text-main
-                      hover:bg-black/5 dark:hover:bg-white/10
+                      hover:bg-surface-2
                       transition
                     "
                   >
@@ -264,7 +237,6 @@ export default function Assets() {
                   </button>
                 ))}
               </div>
-
             </div>
           </div>
         ))}
