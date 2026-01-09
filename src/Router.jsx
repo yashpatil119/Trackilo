@@ -3,17 +3,24 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/adminPages/Dashboard";
 import Applayout from "./appLayout/Applayout";
 import Assets from "./pages/adminPages/Assets";
-import { Component } from "lucide-react";
+// import { Component } from "lucide-react";
 import Components from "./pages/adminPages/Components";
 import Maintenance from "./pages/adminPages/Maintenance";
 import AssetsTypes from "./pages/adminPages/AssetsTypes";
-import { Brands } from "./pages/adminPages/Brands"; 
+import Brands from "./pages/adminPages/Brands";
 import Suppliers from "./pages/adminPages/Suppliers";
 import AssetMovement from "./pages/adminPages/AssetMovement";
 import ComponentMovement from "./pages/adminPages/ComponentMovement";
 import Locations from "./pages/adminPages/Locations";
 import Employees from "./pages/adminPages/Employees";
 import { Departments } from "./pages/adminPages/Departments";
+import AssetStatus from "./pages/adminPages/AssetStatus";
+import Alert from "./pages/adminPages/Alert";
+import { QrCode } from "lucide-react";
+import QRcode from "./pages/adminPages/QRcode";
+import Reports from "./pages/adminPages/Reports";
+import RoleandPermission from "./pages/adminPages/RoleandPermission";
+import UserManagement from "./pages/adminPages/UserManagement";
 
 const router = createBrowserRouter([
   {
@@ -33,43 +40,69 @@ const router = createBrowserRouter([
         element: <Components />,
       },
       {
-        path : "maintenance",
-        element : <Maintenance />
+        path: "maintenance",
+        element: <Maintenance />,
       },
       {
-        path : "asset-types",
-        element : <AssetsTypes />
+        path: "asset-types",
+        element: <AssetsTypes />,
       },
       {
-        path : "brands",
-        element : <Brands />
+        path: "asset-status",
+        element: <AssetStatus />,
       },
       {
-        path : "suppliers",
-        element : <Suppliers />
+        path: "asset-types",
+        element: <AssetsTypes />,
       },
       {
-        path : "asset-movement",
-        element : <AssetMovement />
+        path: "brands",
+        element: <Brands />,
       },
       {
-        path : "component-movement",
-        element : <ComponentMovement />
+        path: "suppliers",
+        element: <Suppliers />,
       },
       {
-        path : "locations",
-        element : <Locations />
+        path: "asset-movement",
+        element: <AssetMovement />,
       },
       {
-        path : "employees",
-        element : <Employees />
+        path: "component-movement",
+        element: <ComponentMovement />,
       },
       {
-        path : "departments",
-        element : <Departments />
+        path: "locations",
+        element: <Locations />,
       },
-      
-
+      {
+        path: "employees",
+        element: <Employees />,
+      },
+      {
+        path: "departments",
+        element: <Departments />,
+      },
+      {
+        path: "reports",
+        element: <Reports />,
+      },
+      {
+        path: "alert",
+        element: <Alert />,
+      },
+      {
+        path: "qrcode",
+        element: <QRcode />,
+      },
+      {
+        path: "usermanagement",
+        element: <UserManagement />,
+      },
+      {
+        path: "roleandpermission",
+        element: <RoleandPermission />,
+      },
     ],
   },
 ]);

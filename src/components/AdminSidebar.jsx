@@ -36,6 +36,7 @@ export default function AdminSidebar({
       title: "CONFIGURATION",
       items: [
         { icon: Layers, label: "Asset Types", path: "/asset-types" },
+        { icon: Layers, label: "Asset status", path: "/asset-status" },
         { icon: Package, label: "Brands", path: "/brands" },
         { icon: Wrench, label: "Suppliers", path: "/suppliers" },
       ],
@@ -44,7 +45,11 @@ export default function AdminSidebar({
       title: "MOVEMENT & TRACKING",
       items: [
         { icon: Layers, label: "Asset Movement", path: "/asset-movement" },
-        { icon: Layers, label: "Component Movement", path: "/component-movement" },
+        {
+          icon: Layers,
+          label: "Component Movement",
+          path: "/component-movement",
+        },
         { icon: Layers, label: "Locations", path: "/locations" },
       ],
     },
@@ -56,10 +61,21 @@ export default function AdminSidebar({
       ],
     },
     {
-      title: "SYSTEM",
+      title: "ANALYTICS",
+      items: [{ icon: Layers, label: "Reports", path: "/reports" }],
+    },
+    {
+      title: "TOOLS AND UTILITIES",
       items: [
-        { icon: Settings, label: "Settings", path: "/settings" },
-        { icon: HelpCircle, label: "Help", path: "/help" },
+        { icon: Settings, label: "ALERT", path: "/alert" },
+        { icon: HelpCircle, label: "QR code", path: "/qrcode" },
+      ],
+    },
+    {
+      title: "SYSTEM SETTINGS",
+      items: [
+        { icon: Settings, label: "User management", path: "/usermanagement" },
+        { icon: HelpCircle, label: "Role and Permissions", path: "/roleandpermission" },
       ],
     },
   ];
@@ -91,23 +107,22 @@ export default function AdminSidebar({
           noise-overlay
         `,
           "lg:static lg:translate-x-0",
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+          isSidebarOpen
+            ? "translate-x-0"
+            : "-translate-x-full lg:translate-x-0",
           sidebarWidth
         )}
       >
-
         {/* Theme-aware bloom glows */}
         <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] bloom-ring"></div>
         <div className="absolute -top-20 left-6 w-64 h-64 bloom-ring opacity-40"></div>
 
         {/* CONTENT */}
         <div className="relative z-10 h-full flex flex-col">
-
           {/* Scroll area */}
           <div className="flex-1 overflow-y-auto scrollbar-hide p-4 flex flex-col gap-6">
             {sections.map((section, index) => (
               <div key={index} className="flex flex-col gap-2">
-
                 {/* TITLE */}
                 <span
                   className={clsx(
@@ -144,11 +159,17 @@ export default function AdminSidebar({
             >
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/5 hover:bg-primary/20 transition-colors">
-                  {isSidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+                  {isSidebarCollapsed ? (
+                    <ChevronRight size={18} />
+                  ) : (
+                    <ChevronLeft size={18} />
+                  )}
                 </div>
 
                 {!isSidebarCollapsed && (
-                  <span className="text-sm font-medium tracking-wide">Collapse</span>
+                  <span className="text-sm font-medium tracking-wide">
+                    Collapse
+                  </span>
                 )}
               </div>
             </button>
