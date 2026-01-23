@@ -84,9 +84,7 @@ export default function Brands() {
     <div className="space-y-10">
       {/* HEADER */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-text-main">
-          Asset Statuses
-        </h1>
+        <h1 className="text-2xl font-semibold text-text-main">Brands</h1>
 
         <button
           onClick={() => setIsAddModalOpen(true)}
@@ -118,18 +116,14 @@ export default function Brands() {
         columns={COLS}
         data={brands}
         renderRow={{
-          header: ["Name", "Description", "Color", "Created At", "Actions"],
+          header: ["Name", "Description", "Actions"],
           body: (b) => (
-            <div className={`grid ${COLS} gap-4 items-center`}>
+            <div className={`grid ${COLS} gap-3 items-center`}>
               <span className="text-sm font-medium text-text-main">
                 {b.name}
               </span>
 
-              <span className="text-sm">{b.description}</span>
-
-              <span className="text-sm">{b.color}</span>
-
-              <span className="text-sm">{b.createdAt}</span>
+              <span className="text-sm text-gray-600">{b.description}</span>
 
               <div className="flex justify-end gap-2">
                 <button className="icon-btn bg-info/10 text-info">

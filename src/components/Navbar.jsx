@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState, useRef, useEffect } from "react";
 import {
   Menu,
@@ -48,7 +47,6 @@ export default function Navbar({ toggleSidebar }) {
       "
     >
       <div className="flex h-full items-center justify-between px-4 lg:px-6">
-
         {/* LEFT */}
         <div className="flex items-center gap-4">
           <button
@@ -79,7 +77,6 @@ export default function Navbar({ toggleSidebar }) {
 
         {/* RIGHT */}
         <div className="flex items-center gap-2">
-
           {/* THEME TOGGLE */}
           <button
             onClick={toggleTheme}
@@ -126,9 +123,7 @@ export default function Navbar({ toggleSidebar }) {
 
               <ChevronDown
                 size={16}
-                className={`transition-transform ${
-                  open ? "rotate-180" : ""
-                }`}
+                className={`transition-transform ${open ? "rotate-180" : ""}`}
               />
             </button>
 
@@ -148,9 +143,7 @@ export default function Navbar({ toggleSidebar }) {
                   <p className="text-sm font-semibold text-text-main">
                     Cornellia Hubbert
                   </p>
-                  <p className="text-xs text-text-muted">
-                    admin@trackilo.com
-                  </p>
+                  <p className="text-xs text-text-muted">admin@trackilo.com</p>
                 </div>
 
                 <div className="py-1">
@@ -177,7 +170,6 @@ export default function Navbar({ toggleSidebar }) {
             )}
           </div>
         </div>
-
       </div>
     </header>
   );

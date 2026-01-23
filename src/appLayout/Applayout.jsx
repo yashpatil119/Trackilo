@@ -10,41 +10,32 @@ export default function AppLayout() {
 
   return (
     <div className="relative min-h-screen bg-app-bg text-text-main">
-
-      {/* Global ambient background (never scrolls) */}
+      {/* Background blur */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="absolute -left-24 top-32 w-[360px] h-[360px] rounded-full bg-primary/10 blur-[140px] opacity-30" />
         <div className="absolute right-0 bottom-0 w-[260px] h-[260px] rounded-full bg-primary/5 blur-[120px] opacity-20" />
       </div>
 
-      {/* NAVBAR (sticky) */}
+      {/* NAVBAR */}
       <Navbar toggleSidebar={() => setIsMobileSidebarOpen(true)} />
 
-      {/* MAIN SHELL */}
-      <div className="relative z-10 flex">
+      {/* MAIN LAYOUT */}
+      <div className="relative z-10 flex h-[calc(100vh-64px)]">
+        {/* SIDEBAR (fixed scroll) */}
+        <aside className="h-full overflow-y-auto">
+          <AdminSidebar
+            isSidebarCollapsed={isSidebarCollapsed}
+            toggleSidebarCollapse={() => setIsSidebarCollapsed((p) => !p)}
+            isSidebarOpen={isMobileSidebarOpen}
+            closeMobileSidebar={() => setIsMobileSidebarOpen(false)}
+          />
+        </aside>
 
-        {/* SIDEBAR (sticky, non-scroll) */}
-        <AdminSidebar
-          isSidebarCollapsed={isSidebarCollapsed}
-          toggleSidebarCollapse={() => setIsSidebarCollapsed(p => !p)}
-          isSidebarOpen={isMobileSidebarOpen}
-          closeMobileSidebar={() => setIsMobileSidebarOpen(false)}
-        />
-
-        {/* CONTENT AREA (only scroll container) */}
-        <main
-          className="
-            flex-1
-            min-h-[calc(100vh-64px)]
-            p-5
-            overflow-y-auto
-          "
-        >
-          {/* Glass content frame */}
+        {/* MAIN CONTENT (only this scrolls) */}
+        <main className="flex-1 overflow-y-auto p-5">
           <div
             className="
               relative
-              container-frame
               bg-app-frame
               border border-white/5
               shadow-soft
@@ -57,7 +48,6 @@ export default function AppLayout() {
             <Outlet />
           </div>
         </main>
-
       </div>
     </div>
   );

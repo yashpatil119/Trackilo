@@ -10,6 +10,18 @@ import {
   HelpCircle,
   ChevronLeft,
   ChevronRight,
+  Handshake,
+  Binoculars,
+  ChartCandlestick,
+  Component,
+  MapPin,
+  IdCardLanyard,
+  Flame,
+  Bug,
+  MessageSquareWarning,
+  QrCode,
+  Users,
+  Shell,
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -35,8 +47,8 @@ export default function AdminSidebar({
     {
       title: "CONFIGURATION",
       items: [
-        { icon: Layers, label: "Asset Types", path: "/asset-types" },
-        { icon: Layers, label: "Asset status", path: "/asset-status" },
+        { icon: Handshake, label: "Asset Types", path: "/asset-types" },
+        { icon: Binoculars, label: "Asset status", path: "/asset-status" },
         { icon: Package, label: "Brands", path: "/brands" },
         { icon: Wrench, label: "Suppliers", path: "/suppliers" },
       ],
@@ -44,38 +56,46 @@ export default function AdminSidebar({
     {
       title: "MOVEMENT & TRACKING",
       items: [
-        { icon: Layers, label: "Asset Movement", path: "/asset-movement" },
         {
-          icon: Layers,
+          icon: ChartCandlestick,
+          label: "Asset Movement",
+          path: "/asset-movement",
+        },
+        {
+          icon: Component,
           label: "Component Movement",
           path: "/component-movement",
         },
-        { icon: Layers, label: "Locations", path: "/locations" },
+        { icon: MapPin, label: "Locations", path: "/locations" },
       ],
     },
     {
       title: "HUMAN RESOURCES",
       items: [
-        { icon: Layers, label: "Employees", path: "/employees" },
-        { icon: Layers, label: "Departments", path: "/departments" },
+        { icon: IdCardLanyard, label: "Employees", path: "/employees" },
+        { icon: Flame, label: "Departments", path: "/departments" },
       ],
     },
     {
       title: "ANALYTICS",
-      items: [{ icon: Layers, label: "Reports", path: "/reports" }],
+      items: [{ icon: Bug, label: "Reports", path: "/reports" }],
     },
     {
       title: "TOOLS AND UTILITIES",
       items: [
-        { icon: Settings, label: "Alert", path: "/alert" },
-        { icon: HelpCircle, label: "QR code", path: "/qrcode" },
+        { icon: MessageSquareWarning, label: "Alert", path: "/alert" },
+        { icon: QrCode, label: "QR code", path: "/qrcode" },
       ],
     },
     {
       title: "SYSTEM SETTINGS",
       items: [
-        { icon: Settings, label: "User management", path: "/usermanagement" },
-        { icon: HelpCircle, label: "Role and Permissions", path: "/roleandpermission" },
+        { icon: Users, label: "User management", path: "/usermanagement" },
+        {
+          icon: Shell,
+          label: "Role and Permissions",
+          path: "/roleandpermission",
+        },
       ],
     },
   ];
@@ -110,7 +130,7 @@ export default function AdminSidebar({
           isSidebarOpen
             ? "translate-x-0"
             : "-translate-x-full lg:translate-x-0",
-          sidebarWidth
+          sidebarWidth,
         )}
       >
         {/* Theme-aware bloom glows */}
@@ -127,7 +147,7 @@ export default function AdminSidebar({
                 <span
                   className={clsx(
                     "text-[10px] font-semibold tracking-wide text-text-muted/70 transition-all",
-                    isSidebarCollapsed && "opacity-0 w-0 overflow-hidden"
+                    isSidebarCollapsed && "opacity-0 w-0 overflow-hidden",
                   )}
                 >
                   {section.title}
@@ -196,7 +216,7 @@ function SidebarItem({ item, collapsed }) {
           transition-all duration-200 select-none
         `,
           collapsed ? "justify-center" : "justify-start",
-          isActive && "sidebar-item-active"
+          isActive && "sidebar-item-active",
         )
       }
     >
@@ -205,7 +225,7 @@ function SidebarItem({ item, collapsed }) {
       <span
         className={clsx(
           "sidebar-label whitespace-nowrap text-sm font-medium transition-all duration-200",
-          collapsed ? "opacity-0 w-0 overflow-hidden" : "opacity-100"
+          collapsed ? "opacity-0 w-0 overflow-hidden" : "opacity-100",
         )}
       >
         {item.label}
