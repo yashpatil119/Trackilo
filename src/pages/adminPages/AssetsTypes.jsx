@@ -9,19 +9,51 @@ import BaseFormModel from "../../components/BaseFormModel";
 const assetTypes = [
   {
     id: 1,
-    name: "Test",
-    description: "NA",
-    total: 0,
-    allocated: 0,
-    unallocated: 0,
+    name: "Laptops",
+    description: "Computing devices for office use",
+    total: 45,
+    allocated: 38,
+    unallocated: 7,
   },
   {
     id: 2,
-    name: "Test1",
-    description: "NA",
-    total: 0,
-    allocated: 0,
-    unallocated: 0,
+    name: "Desktops",
+    description: "Desktop computers for work stations",
+    total: 32,
+    allocated: 28,
+    unallocated: 4,
+  },
+  {
+    id: 3,
+    name: "Printers",
+    description: "Printing devices and peripherals",
+    total: 12,
+    allocated: 11,
+    unallocated: 1,
+  },
+  {
+    id: 4,
+    name: "Monitors",
+    description: "Display screens for computers",
+    total: 78,
+    allocated: 65,
+    unallocated: 13,
+  },
+  {
+    id: 5,
+    name: "Keyboards & Mice",
+    description: "Input devices and accessories",
+    total: 120,
+    allocated: 95,
+    unallocated: 25,
+  },
+  {
+    id: 6,
+    name: "Network Equipment",
+    description: "Routers, switches, and network devices",
+    total: 18,
+    allocated: 16,
+    unallocated: 2,
   },
 ];
 
@@ -120,11 +152,11 @@ export default function AssetsTypes() {
 
               <span className="text-sm">{a.description}</span>
 
-              <Badge value={a.total} variant="primary" />
+              <span className="text-sm">{a.total}</span>
 
-              <Badge value={a.allocated} variant="warning" />
+              <span className="text-sm">{a.allocated}</span>
 
-              <Badge value={a.unallocated} variant="success" />
+              <span className="text-sm">{a.unallocated}</span>
 
               <div className="flex justify-end">
                 <button className="icon-btn flex items-center gap-1">
@@ -146,9 +178,9 @@ export default function AssetsTypes() {
 
 function Badge({ value, variant }) {
   const variants = {
-    primary: "bg-primary text-white",
-    warning: "bg-warning text-black",
-    success: "bg-success text-white",
+    primary: "bg-blue-100 text-slate-900 dark:bg-primary dark:text-white",
+    warning: "bg-orange-100 text-orange-900 dark:bg-warning dark:text-white",
+    success: "bg-green-100 text-green-900 dark:bg-success dark:text-white",
   };
 
   return (

@@ -45,7 +45,7 @@ const components = [
 ];
 
 /* GRID COLUMNS */
-const COLS = "grid-cols-[60px_80px_200px_150px_120px_120px_100px_160px_100px]";
+const COLS = "grid-cols-[60px_70px_180px_130px_100px_100px_90px_140px_90px]";
 
 /* -----------------------------
    ADD COMPONENT FORM FIELDS

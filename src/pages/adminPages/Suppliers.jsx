@@ -28,7 +28,7 @@ const suppliers = [
 ];
 
 /* GRID — MATCH IMAGE */
-const COLS = "grid-cols-[220px_220px_180px_180px_160px_160px_160px]";
+const COLS = "grid-cols-[140px_160px_130px_140px_120px_120px_100px]";
 
 /* ----------------------------------
    ADD SUPPLIER FORM FIELDS
@@ -152,7 +152,7 @@ export default function Supplier() {
 
               <span className="text-sm">{s.country}</span>
 
-              <div className="flex gap-2">
+              <div className="flex justify-end gap-2">
                 <button className="icon-btn bg-info/10 text-info">
                   <Pencil size={14} />
                 </button>

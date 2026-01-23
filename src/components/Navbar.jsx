@@ -1,4 +1,4 @@
-// Navbar.jsx
+// src/components/Navbar.jsx
 import React, { useState, useRef, useEffect } from "react";
 import {
   Menu,
@@ -10,7 +10,6 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
-
 import { applyTheme, getInitialTheme } from "../lib/theme";
 
 export default function Navbar({ toggleSidebar }) {
@@ -25,110 +24,100 @@ export default function Navbar({ toggleSidebar }) {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
   /* ---------------- PROFILE DROPDOWN ---------------- */
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    const handler = (e) => {
+    const close = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsProfileOpen(false);
+        setOpen(false);
       }
     };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
   }, []);
 
   return (
-    <nav
+    <header
       className="
-        sticky top-0 z-40 h-16 w-full
-        glass shadow-soft
-        border-b border-white/10
+        sticky top-0 z-40
+        h-16 w-full
+        bg-surface
+        border-b border-subtle
+        shadow-soft
       "
     >
       <div className="flex h-full items-center justify-between px-4 lg:px-6">
 
-        {/* ---------------- LEFT ---------------- */}
+        {/* LEFT */}
         <div className="flex items-center gap-4">
-
-          {/* Mobile toggle */}
           <button
             onClick={toggleSidebar}
-            className="
-              lg:hidden p-2 rounded-lg
-              text-text-muted hover:text-text-main
-              hover:bg-white/5 transition
-            "
+            className="lg:hidden p-2 rounded-lg hover:bg-surface-2"
           >
             <Menu size={20} />
           </button>
 
-          {/* Logo */}
+          {/* LOGO */}
           <div className="flex items-center gap-3 select-none">
-            <div className="relative">
-              <div
-                className="
-                  w-9 h-9 rounded-xl flex items-center justify-center
-                  bg-gradient-to-br from-primary to-primary-600
-                  text-black font-bold text-lg
-                  shadow-elev
-                "
-              >
-                T
-              </div>
-
-              {/* Accent dot */}
-              <span className="
-                absolute -top-1 -right-1 w-2.5 h-2.5
-                rounded-full bg-orange-400
-                shadow-md
-              " />
+            <div
+              className="
+                w-9 h-9 rounded-xl
+                flex items-center justify-center
+                bg-primary/15 text-primary
+                font-bold text-lg
+                border border-primary/30
+              "
+            >
+              T
             </div>
-
-            <span className="hidden sm:block font-semibold text-lg tracking-tight text-text-main">
+            <span className="hidden sm:block text-lg font-semibold text-text-main">
               Trackilo
             </span>
           </div>
         </div>
 
-        {/* ---------------- RIGHT ---------------- */}
+        {/* RIGHT */}
         <div className="flex items-center gap-2">
 
-          {/* Theme toggle */}
+          {/* THEME TOGGLE */}
           <button
             onClick={toggleTheme}
             className="
               p-2 rounded-lg
-              text-text-muted hover:text-text-main
-              hover:bg-white/5 transition
+              hover:bg-surface-2
+              transition
             "
-            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            title="Toggle theme"
           >
             {theme === "light" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          {/* Profile */}
+          {/* PROFILE */}
           <div className="relative" ref={dropdownRef}>
             <button
-              onClick={() => setIsProfileOpen((v) => !v)}
+              onClick={() => setOpen((v) => !v)}
               className="
-                flex items-center gap-3 px-3 py-2 rounded-lg
-                hover:bg-white/5 transition
+                flex items-center gap-3
+                px-2 py-1.5 rounded-lg
+                hover:bg-surface-2
+                transition
               "
             >
               <div
                 className="
                   w-9 h-9 rounded-full
-                  bg-gradient-to-br from-primary to-primary-600
                   flex items-center justify-center
-                  text-black font-semibold
-                  shadow-soft
+                  bg-surface-2
+                  text-text-main
+                  font-semibold
+                  border border-dark/7
                 "
               >
                 CH
               </div>
 
-              <div className="hidden md:block text-left leading-tight">
+              <div className="hidden md:block text-left">
                 <p className="text-sm font-medium text-text-main">
                   Cornellia Hubbert
                 </p>
@@ -137,22 +126,25 @@ export default function Navbar({ toggleSidebar }) {
 
               <ChevronDown
                 size={16}
-                className={`text-text-muted transition-transform ${
-                  isProfileOpen ? "rotate-180" : ""
+                className={`transition-transform ${
+                  open ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            {/* Dropdown */}
-            {isProfileOpen && (
+            {/* DROPDOWN */}
+            {open && (
               <div
                 className="
-                  absolute right-0 mt-2 w-56 overflow-hidden
-                  rounded-xl glass shadow-elev
-                  border border-white/10
+                  absolute right-0 mt-2 w-56
+                  rounded-xl
+                  bg-surface
+                  border border-subtle
+                  shadow-elev
+                  overflow-hidden
                 "
               >
-                <div className="p-4 border-b border-white/10">
+                <div className="px-4 py-3 border-b border-subtle">
                   <p className="text-sm font-semibold text-text-main">
                     Cornellia Hubbert
                   </p>
@@ -161,21 +153,23 @@ export default function Navbar({ toggleSidebar }) {
                   </p>
                 </div>
 
-                <div className="py-2">
+                <div className="py-1">
                   <DropdownItem icon={User} label="Profile" />
                   <DropdownItem icon={Settings} label="Settings" />
                   <DropdownItem icon={HelpCircle} label="Help & Support" />
                 </div>
 
-                <div className="border-t border-white/10 py-2">
+                <div className="border-t border-subtle">
                   <button
                     className="
-                      w-full flex items-center gap-3 px-4 py-2.5
-                      text-red-400 hover:text-red-300
-                      hover:bg-red-500/10 transition
+                      w-full flex items-center gap-3
+                      px-4 py-2.5
+                      text-red-600
+                      hover:bg-red-50
+                      transition
                     "
                   >
-                    <LogOut size={17} />
+                    <LogOut size={16} />
                     <span className="text-sm">Logout</span>
                   </button>
                 </div>
@@ -185,22 +179,24 @@ export default function Navbar({ toggleSidebar }) {
         </div>
 
       </div>
-    </nav>
+    </header>
   );
 }
 
-/* ---------------- Dropdown Item ---------------- */
+/* ---------------- DROPDOWN ITEM ---------------- */
 function DropdownItem({ icon: Icon, label }) {
   return (
     <button
       className="
-        w-full flex items-center gap-3 px-4 py-2.5
-        text-text-muted hover:text-text-main
-        hover:bg-white/5 transition
+        w-full flex items-center gap-3
+        px-4 py-2.5
+        text-sm text-text-main
+        hover:bg-surface-2
+        transition
       "
     >
-      <Icon size={18} />
-      <span className="text-sm">{label}</span>
+      <Icon size={16} />
+      {label}
     </button>
   );
 }

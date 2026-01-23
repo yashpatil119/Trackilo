@@ -9,15 +9,50 @@ import BaseFormModel from "../../components/BaseFormModel";
 const brands = [
   {
     id: 1,
-    name: "Test",
-    description: "-",
-    color: "-",
-    createdAt: "12/17/2025",
+    name: "Dell",
+    description: "Dell Inc. - Leading computer and IT solutions provider",
+    color: "#0066CC",
+    createdAt: "01/10/2025",
+  },
+  {
+    id: 2,
+    name: "HP",
+    description: "Hewlett-Packard - Computing and printing solutions",
+    color: "#003DA5",
+    createdAt: "01/10/2025",
+  },
+  {
+    id: 3,
+    name: "Lenovo",
+    description: "Lenovo - Personal computers and enterprise solutions",
+    color: "#E4002B",
+    createdAt: "01/12/2025",
+  },
+  {
+    id: 4,
+    name: "Apple",
+    description: "Apple Inc. - Premium consumer electronics and computers",
+    color: "#555555",
+    createdAt: "01/12/2025",
+  },
+  {
+    id: 5,
+    name: "Samsung",
+    description: "Samsung Electronics - Technology and consumer electronics",
+    color: "#1428A0",
+    createdAt: "01/13/2025",
+  },
+  {
+    id: 6,
+    name: "LG Electronics",
+    description: "LG Electronics - Displays and electronic devices",
+    color: "#CC0000",
+    createdAt: "01/15/2025",
   },
 ];
 
 /* GRID — MATCH IMAGE */
-const COLS = "grid-cols-[240px_360px_160px_200px_160px]";
+const COLS = "grid-cols-[180px_300px_140px_150px_100px]";
 
 /* ----------------------------------
    ADD BRAND FORM FIELDS
@@ -96,7 +131,7 @@ export default function Brands() {
 
               <span className="text-sm">{b.createdAt}</span>
 
-              <div className="flex gap-2">
+              <div className="flex justify-end gap-2">
                 <button className="icon-btn bg-info/10 text-info">
                   <Pencil size={14} />
                 </button>

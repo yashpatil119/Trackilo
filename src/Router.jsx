@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/adminPages/Dashboard";
 import Applayout from "./appLayout/Applayout";
 import Assets from "./pages/adminPages/Assets";
-// import { Component } from "lucide-react";
 import Components from "./pages/adminPages/Components";
 import Maintenance from "./pages/adminPages/Maintenance";
 import AssetsTypes from "./pages/adminPages/AssetsTypes";
@@ -13,19 +12,17 @@ import AssetMovement from "./pages/adminPages/AssetMovement";
 import ComponentMovement from "./pages/adminPages/ComponentMovement";
 import Locations from "./pages/adminPages/Locations";
 import Employees from "./pages/adminPages/Employees";
-import { Departments } from "./pages/adminPages/Departments";
-import AssetStatus from "./pages/adminPages/AssetStatus";
-import Alert from "./pages/adminPages/Alert";
-import { QrCode } from "lucide-react";
-import QRcode from "./pages/adminPages/QRcode";
+import Departments from "./pages/adminPages/Departments";
 import Reports from "./pages/adminPages/Reports";
-import RoleandPermission from "./pages/adminPages/RoleandPermission";
+import Alert from "./pages/adminPages/Alert";
+import QRcode from "./pages/adminPages/QRcode";
 import UserManagement from "./pages/adminPages/UserManagement";
-
+import RoleandPermission from "./pages/adminPages/RoleandPermission";
+import AssetStatus from "./pages/adminPages/AssetStatus";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Applayout />, // Navbar + Sidebar + Hero + Outlet
+    element: <Applayout />,
     children: [
       {
         index: true,

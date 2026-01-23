@@ -67,7 +67,7 @@ export default function AdminSidebar({
     {
       title: "TOOLS AND UTILITIES",
       items: [
-        { icon: Settings, label: "ALERT", path: "/alert" },
+        { icon: Settings, label: "Alert", path: "/alert" },
         { icon: HelpCircle, label: "QR code", path: "/qrcode" },
       ],
     },

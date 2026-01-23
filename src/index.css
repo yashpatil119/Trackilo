@@ -476,14 +476,7 @@ body {
 
 /* Table header — consistent across themes */
 .table-header {
-  padding: 0.75rem 1.5rem;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
   border-bottom: 1px solid var(--border-subtle);
-  background: transparent;
 }
 
 /* Row hover (theme-aware) */
